@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: stepdefinitions.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 15.424 s <<< FAILURE! - in stepdefinitions.TestRunner
+Search item and verify product details on Amazon.Search for Nikon, sort results, and verify product details  Time elapsed: 14.702 s  <<< FAILURE!
+java.lang.AssertionError: Product topic/header does not contain 'Nikon D3X'
+	at stepdefinitions.SearchSteps.user_can_confirm_if_the_details_header_contains_the_text(SearchSteps.java:69)
+	at ✽.User can confirm if the details header contains the text "Nikon D3X"(file:///C:/Users/Nilushika/eclipse-workspace2/nordeaassignmentcucumber/src/test/resources/features/search.feature:32)
+

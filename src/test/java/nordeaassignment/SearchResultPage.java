@@ -1,7 +1,11 @@
 package nordeaassignment;
 
+import java.time.Duration;
 import java.util.List;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -24,10 +28,20 @@ public class SearchResultPage {
 	// Selecting the second header element
 	public static WebElement selectSecondElement(WebDriver driver) {
 	
-		// Find all the search result elements
+		WebDriverWait wd=new WebDriverWait(driver,Duration.ofSeconds(10));
+
+		By elementLocatorSearchResult=By.xpath("//div[@data-component-type='s-search-result']");
+		wd.until(ExpectedConditions.presenceOfAllElementsLocatedBy(elementLocatorSearchResult));
+		
 		List<WebElement> searchResults = driver.findElements(By.xpath("//div[@data-component-type='s-search-result']"));
-		WebElement secondResult = searchResults.get(1); // Get the second result element
-		secondResult.click(); // Click on the second result element
+	
+		if(searchResults!=null && searchResults.size() >1) {
+			WebElement secondResult = searchResults.get(1); // Get the second result element
+			secondResult.click(); 	
+			
+		}
+		
+		// Click on the second result element
 		return element;
 	}
 

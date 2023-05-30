@@ -59,8 +59,8 @@ public class SearchSteps {
 		SearchResultPage.secondElement(driver);
 		System.out.println("Second product selected");	
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);	
+	//	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);	
 
 	}
 

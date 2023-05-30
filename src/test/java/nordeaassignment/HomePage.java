@@ -13,6 +13,7 @@ public class HomePage {
 
 	// Search TextBox
 		public static WebElement searchBox(WebDriver driver) {
+			
 			WebDriverWait wd=new WebDriverWait(driver,Duration.ofSeconds(10));
 			By elementLocatorSearch=By.id("twotabsearchtextbox");
 			wd.until(ExpectedConditions.presenceOfAllElementsLocatedBy(elementLocatorSearch));

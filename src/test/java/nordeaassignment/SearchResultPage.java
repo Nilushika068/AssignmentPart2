@@ -27,7 +27,8 @@ public class SearchResultPage {
 	}
 	// Selecting the second header element
 	public static WebElement selectSecondElement(WebDriver driver) {
-	
+		
+		// wait until the element is loaded
 		WebDriverWait wd=new WebDriverWait(driver,Duration.ofSeconds(10));
 
 		By elementLocatorSearchResult=By.xpath("//div[@data-component-type='s-search-result']");
@@ -35,6 +36,7 @@ public class SearchResultPage {
 		
 		List<WebElement> searchResults = driver.findElements(By.xpath("//div[@data-component-type='s-search-result']"));
 	
+		// Eliminate null pointer exception
 		if(searchResults!=null && searchResults.size() >1) {
 			WebElement secondResult = searchResults.get(1); // Get the second result element
 			secondResult.click(); 	

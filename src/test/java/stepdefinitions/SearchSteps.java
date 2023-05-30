@@ -20,16 +20,18 @@ public class SearchSteps {
 	static WebDriver driver;
 	String baseUrl = "http://amazon.com";
 
+	// Set up WebDriver and navigate to the base URL
 	@Given("User has to be on Amazon home page")
 	public void user_has_to_be_on_amazon_home_page() {
 		System.setProperty("webdriver.gecko.driver", "src/geckodriver.exe");
 		WebDriver driver = new ChromeDriver();
 		SearchSteps.driver=driver;
 		driver.get(baseUrl); // Call the URL
-	//	driver.manage().timeouts().until(20, TimeUnit.SECONDS);
+		
+		// Wait until the search box is visible
 		WebDriverWait wd=new WebDriverWait(driver,Duration.ofSeconds(10));
 		wd.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("twotabsearchtextbox"))));
-		//driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		
 	}
 
 	@When("User search for {string}")
@@ -50,26 +52,28 @@ public class SearchSteps {
 
 	@Then("User select highest to lowest on the sort dropdown menu")
 	public void user_select_highest_to_lowest_on_the_sort_dropdown_menu() throws Exception {
+		
+		// Sort the search results from highest to lowest
 		SearchResultPage.sortResult(driver);
 		System.out.println("Item have been Sorted");
 	}
 
 	@Then("User select the second product from the list")
 	public void user_select_the_second_product_from_the_list() {
+		
+		// Select the second product from the search results
 		SearchResultPage.secondElement(driver);
 		System.out.println("Second product selected");	
-
-	//	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		//driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);	
 
 	}
 
 	@Then("User can confirm if the details header contains the text {string}")
 	public void user_can_confirm_if_the_details_header_contains_the_text(String string) {
+		
+		// Get the details header text and assert if it contains the expected text
 		String details = SearchResultPage.headerDetails(driver).getText();
 		System.out.println(details);
 		assert details.contains("Nikon D3X") : "Product topic/header does not contain 'Nikon D3X'";
-		//assertTrue(Details.contains(string));
 
 	}
 

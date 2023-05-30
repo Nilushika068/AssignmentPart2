@@ -1,9 +1,15 @@
 package stepdefinitions;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,12 +26,15 @@ public class SearchSteps {
 		WebDriver driver = new ChromeDriver();
 		SearchSteps.driver=driver;
 		driver.get(baseUrl); // Call the URL
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+	//	driver.manage().timeouts().until(20, TimeUnit.SECONDS);
+		WebDriverWait wd=new WebDriverWait(driver,Duration.ofSeconds(10));
+		wd.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("twotabsearchtextbox"))));
+		//driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 	}
 
 	@When("User search for {string}")
 	public void user_search_for(String string) {
+		
 		HomePage.fillSearchBox(driver, "Nikon");
 	}
 
